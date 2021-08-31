@@ -9,6 +9,8 @@ nsa.exe
 !data/**
 build
 swp
+*.csv
+*.csv:Zone.Identifier
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

@@ -6,12 +6,12 @@ class Random:
     
     def getNumber(self):
         seed = self.default
-        Q = self.modulus/self.multiplier
-        R = self.modulus%self.multiplier
+        Q = self.modulus / self.multiplier
+        R = self.modulus % self.multiplier
 
-        t = self.multiplier * (seed%Q) * (seed/Q)
+        t = self.multiplier * (seed % Q) * (seed / Q)
 
-        if t>0:
+        if t > 0:
             seed = t
         else:
             seed = t + self.modulus

@@ -1,16 +1,28 @@
 import math
 
 class Geometry:
-    
+
     def __init__(self, problemSize):
-        self.problemSize = problemSize
-    
-    def euclideanDistance(vector, points):
+        self._problemSize = problemSize
+
+    @property
+    def problemSize(self):
+        return self._problemSize
+
+    @problemSize.setter
+    def problemSize(self, problemSize):
+        self._problemSize = problemSize
+
+    def euclideanDistance(self, vector, points):
         sum = 0
-        for i in range(0,self.problemSize,1):
+        for i in range(0, self.problemSize, 1):
             tmp = vector[i] - points[i]
-            sum += tmp*tmp
+            sum += tmp * tmp
         return math.sqrt(sum)
 
-    def matches(vector, dataset, minDist):
-        pass
+    def matches(self, vector, dataset, minDist):
+        for it in range(len(dataset)):
+            dist = self.euclideanDistance(vector, it)
+            if dist <= minDist:
+                return True
+            return False

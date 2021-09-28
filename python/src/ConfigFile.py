@@ -40,7 +40,7 @@ class ConfigFile:
     @testingDatasetCsvFile.setter
     def testingDatasetCsvFile(self, value):
         self._testingDatasetCsvFile = value
-    
+        
     @property
     def expectedDetected(self):
         return self._expectedDetected

@@ -3,7 +3,7 @@ import csv
 class Dataset:
     
     def __init__(self, filename) -> None:
-        self._filename = filename
+        self._filename = '../../data/' + filename
 
     def readDataset(self):
         data: list = []
@@ -14,4 +14,3 @@ class Dataset:
                     data.append(field.split(','))
             data = [float(j) for i in data for j in i]
         return data
-        

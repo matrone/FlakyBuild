@@ -1,6 +1,6 @@
 class Result(object):
-    
+
     def __init__(self) -> None:
         self.generalResults = []
-        self.DR
-        self.FAR
+        self.DR = 0
+        self.FAR = 0

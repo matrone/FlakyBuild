@@ -1,5 +1,4 @@
-import Random
-from copy import deepcopy
+from Random import Random
 from Geometry import Geometry
 from Result import Result
 
@@ -9,20 +8,20 @@ class Detector:
         self._configFile = configFile
         self._geometry = Geometry(self._configFile.problemSize)
         self._selfDataset = selfDataset
+        self.random = Random()
 
     def randomVector(self, vector: list) -> list:
-        for i in range(0, self._configFile.problemSize, 1):
-            vector[i] = self._configFile.getSearchSpaceIndex(2*i) + ((self._configFile.getSearchSpaceIndex(
-                2*i+1) - self._configFile.getSearchSpaceIndex(2*i))*Random().getNumber())
+        for i in range(self._configFile.problemSize):
+            vector[i] = self._configFile.getSearchSpaceIndex(2*i) + (self._configFile.getSearchSpaceIndex(
+                2*i+1) - self._configFile.getSearchSpaceIndex(2*i))*self.random.getNumber()
         return vector
 
     def generateDetectors(self) -> list:
-        detectors = []
+        detectors = list()
         print("Generating detectors...")
         detector = [None]*self._configFile.problemSize
-        size = len(detectors)
-        while size < self._configFile.maxDetectors:
-            self.randomVector(detector)
+        while len(detectors) < self._configFile.maxDetectors:
+            detector = self.randomVector(detector)
             if not self._geometry.matches(detector, self._selfDataset, self._configFile.minDist):
                 if not self._geometry.matches(detector, detectors, 0.0):
                     detectors.append(detector)
@@ -35,17 +34,17 @@ class Detector:
     def applyDetectors(self, detectors: list) -> Result:
         detected = set()
         trial = 1
-        for it in self._selfDataset.index:
-            for col in self._selfDataset.columns:
-                actual = self._geometry.matches(
-                    it, detectors, self._configFile.minDist)
-                expected = self._geometry.matches(
-                    it, self._selfDataset, self._configFile.minDist)
-                if actual == expected:
-                    detected.add(trial)
+        for it in self._selfDataset:
+            actual = self._geometry.matches(
+                it, detectors, self._configFile.minDist)
+            expected = self._geometry.matches(
+                it, self._selfDataset, self._configFile.minDist)
+            if actual == expected:
+                detected.add(trial)
             trial += 1
         print("Expected to be detected: ")
         configExpectedDetected = self._configFile.expectedDetected
+        configExpectedDetected = list(map(int, configExpectedDetected[1:-2].split(',')))
         for it in configExpectedDetected:
             print(it, end='')
             it += 1

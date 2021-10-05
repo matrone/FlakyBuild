@@ -15,14 +15,14 @@ class Geometry:
 
     def euclideanDistance(self, vector, points):
         sum = 0
-        for i in range(0, self.problemSize, 1):
+        for i in range(self.problemSize):
             tmp = vector[i] - points[i]
             sum += tmp * tmp
         return math.sqrt(sum)
 
     def matches(self, vector, dataset, minDist):
-        for it in range(len(dataset)):
+        for it in dataset:
             dist = self.euclideanDistance(vector, it)
             if dist <= minDist:
                 return True
-            return False
+        return False

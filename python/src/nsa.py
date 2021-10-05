@@ -17,12 +17,14 @@ def initSearchSpace(configFile: ConfigFile):
 
 
 def run(configFile: ConfigFile):
-    generalResults: Result = Result().generalResults
+    generalResults: list = list()
     initSearchSpace(configFile)
     trainingDataset = Dataset(
-        configFile.trainingDatasetCsvFile)
+        configFile.trainingDatasetCsvFile
+    )
     testingDataset = Dataset(
-        configFile.testingDatasetCsvFile)
+        configFile.testingDatasetCsvFile
+    )
     selfDatasetForTraining = trainingDataset.readDataset()
     generateSelfDatasetForTesting = testingDataset.readDataset()
     trainingDetectors = Detector(configFile, selfDatasetForTraining)
@@ -30,7 +32,7 @@ def run(configFile: ConfigFile):
     detectors: list = []
     for _ in range(configFile.amountOfProofs):
         detectors = trainingDetectors.generateDetectors()
-        generalResults.generalResults.append(
+        generalResults.append(
             testingDetectors.applyDetectors(detectors))
     print(f'Detectors: {configFile.maxDetectors}/{len(detectors)}')
     print(f'Min. distance: {configFile.minDist}')

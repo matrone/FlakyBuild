@@ -1,12 +1,7 @@
-import pandas as pd
-import numpy as np
 import sys
 from ConfigFile import ConfigFile
 from Dataset import Dataset
-from Geometry import Geometry
 from Detector import Detector
-from Result import Result
-import Random
 
 
 def initSearchSpace(configFile: ConfigFile):
@@ -29,7 +24,7 @@ def run(configFile: ConfigFile):
     generateSelfDatasetForTesting = testingDataset.readDataset()
     trainingDetectors = Detector(configFile, selfDatasetForTraining)
     testingDetectors = Detector(configFile, generateSelfDatasetForTesting)
-    detectors: list = []
+    detectors: list = list()
     for _ in range(configFile.amountOfProofs):
         detectors = trainingDetectors.generateDetectors()
         generalResults.append(

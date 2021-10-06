@@ -16,4 +16,4 @@ class Random:
             self.seed = t + self.modulus
         
         
-        return float(self.seed / self.modulus)
+        return float(self.seed) / self.modulus

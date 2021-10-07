@@ -1,19 +1,23 @@
+import numpy as np
+
 class Random:
+
+    SEED = 123456789
+
     def __init__(self) -> None:
         self.modulus = 2147483647      
         self.multiplier = 48271
-        self.seed = 123456789
     
     def getNumber(self):
-        Q = self.modulus / self.multiplier
-        R = self.modulus % self.multiplier
+        Q = np.longlong(self.modulus / self.multiplier)
+        R = np.longlong(self.modulus % self.multiplier)
 
-        t = self.multiplier * (self.seed % Q) - R * (self.seed / Q)
+        t = self.multiplier * (self.SEED % Q) - R * (self.SEED / Q)
 
         if t > 0:
-            self.seed = t
+            self.SEED = t
         else:
-            self.seed = t + self.modulus
+            self.SEED = t + self.modulus
         
         
-        return float(self.seed) / self.modulus
+        return np.double(self.SEED) / self.modulus

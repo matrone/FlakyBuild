@@ -15,11 +15,11 @@ class Geometry:
         self._problemSize = problemSize
 
     def euclideanDistance(self, vector: list, points: list) -> float:
-        sum: float = 0
+        distance: float = 0
         for i in range(self.problemSize):
             tmp = vector[i] - points[i]
-            sum += tmp * tmp
-        return math.sqrt(sum)
+            distance += tmp * tmp
+        return math.sqrt(distance)
 
     def matches(self, vector: list, dataset: list, minDist: int) -> bool:
         for it in dataset:

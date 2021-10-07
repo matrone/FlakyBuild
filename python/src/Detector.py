@@ -1,7 +1,7 @@
 from Random import Random
 from Geometry import Geometry
 from Result import Result
-
+from random import uniform
 
 class Detector:
     def __init__(self, configFile, selfDataset) -> None:

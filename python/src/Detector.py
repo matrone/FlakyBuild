@@ -1,4 +1,3 @@
-from Random import Random
 from Geometry import Geometry
 from Result import Result
 from random import uniform
@@ -8,12 +7,11 @@ class Detector:
         self._configFile = configFile
         self._geometry = Geometry(self._configFile.problemSize)
         self._selfDataset = selfDataset
-        self.random = Random()
 
     def randomVector(self, vector: list) -> list:
         for i in range(self._configFile.problemSize):
             vector[i] = self._configFile.getSearchSpaceIndex(2*i) + (self._configFile.getSearchSpaceIndex(
-                2*i+1) - self._configFile.getSearchSpaceIndex(2*i))*self.random.getNumber()
+                2*i+1) - self._configFile.getSearchSpaceIndex(2*i))*uniform(0.0, 1.0)
         return vector
 
     def generateDetectors(self) -> list:

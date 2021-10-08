@@ -2,6 +2,7 @@ from Geometry import Geometry
 from Result import Result
 from random import uniform
 
+
 class Detector:
     def __init__(self, configFile, selfDataset) -> None:
         self._configFile = configFile
@@ -10,8 +11,9 @@ class Detector:
 
     def randomVector(self, vector: list) -> list:
         for i in range(self._configFile.problemSize):
-            vector[i] = self._configFile.getSearchSpaceIndex(2*i) + (self._configFile.getSearchSpaceIndex(
-                2*i+1) - self._configFile.getSearchSpaceIndex(2*i))*uniform(0.0, 1.0)
+            vector[i] = self._configFile.getSearchSpaceIndex(2*i)
+            + (self._configFile.getSearchSpaceIndex(2*i+1)
+                - self._configFile.getSearchSpaceIndex(2*i))*uniform(0.0, 1.0)
         return vector
 
     def generateDetectors(self) -> list:
@@ -20,12 +22,15 @@ class Detector:
         detector: list = [None]*self._configFile.problemSize
         while len(detectors) < self._configFile.maxDetectors:
             self.randomVector(detector)
-            if not self._geometry.matches(detector, self._selfDataset, self._configFile.minDist):
+            if not self._geometry.matches(
+                    detector,
+                    self._selfDataset,
+                    self._configFile.minDist):
                 if not self._geometry.matches(detector, detectors, 0.0):
                     detectors.append(detector)
                     detector = [None]*self._configFile.problemSize
                     print(f"{len(detectors)}/{self._configFile.maxDetectors}")
-        if detector != None:
+        if detector is not None:
             del detector
         return detectors
 
@@ -49,7 +54,7 @@ class Detector:
             if it != configExpectedDetected[-1]:
                 print(",", end=' ')
 
-        print("\nFound: ", end = '')
+        print("\nFound: ", end='')
         for it in detected:
             print(it, end='')
             it += 1

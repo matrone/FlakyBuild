@@ -14,7 +14,8 @@ class ConfigFile:
         self._trainingDatasetCsvFile = config_dict[configFileName]['trainingFile']
         self._testingDatasetCsvFile = config_dict[configFileName]['testingFile']
         self._expectedDetected = list(
-            map(int, config_dict[configFileName]['expectedDetected'][1:-1].split(',')))
+            map(int, config_dict[configFileName]['expectedDetected'][1:-1].
+                split(',')))
         self._searchSpace = None
         self._searchSpaceIndex = None
         self._problemSize = int(config_dict[configFileName]['problemSize']

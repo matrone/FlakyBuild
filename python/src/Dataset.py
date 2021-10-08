@@ -6,7 +6,7 @@ class Dataset:
     def __init__(self, filename) -> None:
         self._filename = '../../data/' + filename
 
-    def readDataset(self):
+    def read(self):
         data: list = []
         with open(self._filename, newline='') as csvfile:
             csv_reader = csv.reader(csvfile, delimiter=' ')

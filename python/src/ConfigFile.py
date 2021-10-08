@@ -30,19 +30,19 @@ class ConfigFile:
         return self._minDist
 
     @property
-    def amountOfProofs(self):
+    def amount_of_proofs(self):
         return self._amountOfProofs
 
     @property
-    def trainingDatasetCsvFile(self):
+    def traning_dataset_csv_file(self):
         return self._trainingDatasetCsvFile
 
     @property
-    def testingDatasetCsvFile(self):
+    def testing_dataset_csv_file(self):
         return self._testingDatasetCsvFile
 
-    @testingDatasetCsvFile.setter
-    def testingDatasetCsvFile(self, value):
+    @testing_dataset_csv_file.setter
+    def testing_dataset_csv_file(self, value):
         self._testingDatasetCsvFile = value
 
     @property

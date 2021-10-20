@@ -1,5 +1,5 @@
-# FlaskBuild
-* Este projeto utiliza o Algoritmo de Seleção Negativa (ASN) para encontrar Flask Bulds.
+# NSA TCC
+* Este projeto utiliza o Algoritmo de Seleção Negativa (ASN) para detectar ataques do tipo DDoS nos protocolos UDP, NTP e DNS.
 * Este projeto utiliza CMake para sua configuração.
 
 # Instruções

@@ -9,4 +9,5 @@ nsa.exe
 !data/**
 build
 swp
-*.csv*
+*.csv:*
+DrDoS_*

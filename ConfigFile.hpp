@@ -10,7 +10,7 @@ private:
     std::string fConfigFile;
     int fProblemSize;
     int fMaxDetectors;
-    datatype fMinDist;
+    double fMinDist;
     int fAmountOfProofs;
     std::string fTrainingDatasetCsvFile;
     std::string fTestingDatasetCsvFile;
@@ -28,7 +28,7 @@ public:
 
     int getMaxDetectors() const;
 
-    datatype getMinDist() const;
+    double getMinDist() const;
 
     int getAmountOfProofs() const;
 

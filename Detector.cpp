@@ -1,10 +1,11 @@
 #include "Detector.hpp"
+#include "Debug.hpp"
 #include <cstdlib>
 #include <cmath>
 #include <iostream>
 #include <set>
 #include <string>
-#include "Debug.hpp"
+#include <random>
 
 Detector::Detector(ConfigFile configFile, std::vector<datatype *> *selfDataset)
 {
@@ -54,6 +55,7 @@ std::vector<datatype *> *Detector::generateDetectors()
                 found = true;
                 std::cout << detectors->size() << "/" << fConfigFile.getMaxDetectors() << std::endl;
             }
+            delete copy;
         }
         if(!found) {
             delete[] detector;
@@ -64,7 +66,6 @@ std::vector<datatype *> *Detector::generateDetectors()
 }
     } while (size < fConfigFile.getMaxDetectors());
 }
-
     detectors->resize(fConfigFile.getMaxDetectors());
     return detectors;
 }
@@ -130,5 +131,7 @@ result Detector::applyDetectors(std::vector<datatype *> *detectors)
     datatype newDetectedSize = detected->size();
     result.FAR = (newDetectedSize / expectedDetectedSize);
 
+    delete detected;
+    
     return result;
 }

@@ -10,6 +10,7 @@ ConfigFile::ConfigFile(std::string &name)
     fConfigFile = name;
 }
 
+
 void ConfigFile::read()
 {
     csv::CSVFormat format;
@@ -21,7 +22,7 @@ void ConfigFile::read()
     reader.read_row(row);
     fProblemSize = row[0].get<int>();
     fMaxDetectors = row[1].get<int>();
-    fMinDist = row[2].get<int>();
+    fMinDist = row[2].get<double>();
     fAmountOfProofs = row[3].get<int>();
     fTrainingDatasetCsvFile = row[4].get();
     fTestingDatasetCsvFile = row[5].get();
@@ -40,7 +41,7 @@ int ConfigFile::getMaxDetectors() const
     return fMaxDetectors;
 }
 
-datatype ConfigFile::getMinDist() const
+double ConfigFile::getMinDist() const
 {
     return fMinDist;
 }

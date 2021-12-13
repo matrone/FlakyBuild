@@ -18,10 +18,10 @@ jobs:
 
     - name: Execute CMAKE
       shell: bash
-      working-directory: ${{runner.workspace}}/$BUILD
+      working-directory: ${{runner.workspace}}/build
       run: cmake ../ -DCMAKE_INSTALL_PREFIX=$INSTALL_DIR -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
 
     - name: Execute clang-tidy
       shell: bash
-      working-directory: ${{runner.workspace}}/$BUILD
+      working-directory: ${{runner.workspace}}/build
       run: cd .. && clang-tidy -p=./$BUILD/ -warnings-as-errors="*" -checks="-*,clang-analyzer-*,bugprone-*,hicpp-*,modernize-*,openmp-*" nsa.cpp

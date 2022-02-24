@@ -1,5 +1,5 @@
-# FlaskBuild
-* This solution uses the Negative Selection Algorithm to find Flask Builds.
+# Negative Selection Algorithm for DDoS attack detection
+* This solution uses the Negative Selection Algorithm to detect DDoS attacks on NTP, DNS and UDP protocols.
 * This project uses CMake for its configuration.
 
 # Instructions
@@ -46,3 +46,6 @@ number={},
 pages={1-6},}
 ```
 https://doi.org/10.1109/CLEI47609.2019.235087
+
+# Original repo
+Check the original project @ https://github.com/hpc-fci-mackenzie/FlakyBuild
